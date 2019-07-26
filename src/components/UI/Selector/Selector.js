@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Selector.css';
+import styles from './Selector.css';
 
 const Selector = ({ options, value }) => (
-    <select value={value}>
+    <select value={value} className={styles.selector}>
         {options.map(option => (
             <option value={option.value}>
                 {option.displayValue}

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Input.css';
+import styles from './Input.css';
 
 const Input = ({ type }) => (
     <input
+        className={styles.Input}
         type={type}
     />
 );
