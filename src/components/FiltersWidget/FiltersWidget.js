@@ -7,8 +7,9 @@ const FiltersWidget = () => (
         <h2>Фильтровать объявления</h2>
         <form>
             <p className={styles.categoryName}>По категории:</p>
-            <div className={styles.formElement}>
+            <div className={styles.formElementContainer}>
                 <select className={styles.categorySelect}>
+                    <option value="all">Все</option>
                     <option value="immovable">Недвижимость</option>
                     <option value="cameras">Фотоаппараты</option>
                     <option value="auto">Автомобили</option>
@@ -16,7 +17,7 @@ const FiltersWidget = () => (
                 </select>
             </div>
             <p className={styles.categoryName}>По цене:</p>
-            <div className={styles.formElement}>
+            <div className={styles.formElementContainer}>
                 <label htmlFor="priceFrom" className={styles.priceLabel}>
                     С
                     <input type="text" id="priceFrom" className={styles.priceInput} />
@@ -26,11 +27,8 @@ const FiltersWidget = () => (
                     <input type="text" id="priceTo" className={styles.priceInput} />
                 </label>
             </div>
-            <div className={styles.formElement}>
-                <label htmlFor="favoritesOnly">
-                    Только избранное
-                    <input type="checkbox" id="favoritesOnly" />
-                </label>
+            <div className={styles.formElementContainer}>
+                <button type="button">Только избранное</button>
             </div>
         </form>
     </div>
