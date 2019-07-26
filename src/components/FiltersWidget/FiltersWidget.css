@@ -5,14 +5,11 @@
     box-shadow: -9px -1px 7px -4px #ccc;
 }
 
-.categoryName {
-    
-}
-
 .priceLabel {
-    margin-right: 4px;
+    margin-right: 8px;
 }
 
 .priceInput {
     width: 100px;
+    margin-left: 8px;
 }
