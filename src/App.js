@@ -1,17 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import HelloWorld from './components/HelloWorld/HelloWorld';
+import AdvertsList from './components/AdvertsList/AdvertsList';
+import FiltersWidget from './components/FiltersWidget/FiltersWidget';
 import styles from './App.css';
 
 class App extends Component {
-    render() {
-        return (
-            <div>
-                <h1 className={styles.mainHeader}>My React App!</h1>
-                <HelloWorld />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className={styles.app}>
+        <AdvertsList />
+        <FiltersWidget />
+      </div>
+    );
+  }
 }
 
 export default App;
