@@ -1,7 +1,7 @@
 .sideDrawer {
     width: 85%;
     height: 100vh;
-    padding: 15px;
+    padding: 60px 15px 15px;
     background-color: #fff;
     position: fixed;
     top: 0;
