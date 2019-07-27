@@ -1,0 +1,47 @@
+.hamburgerButton {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+    cursor: pointer;
+    z-index: 3000;
+}
+
+.hamburgerButton div {
+    width: 85%;
+    height: 4px;
+    margin: 3px 0;
+    background-color: #0575e6;
+    border-radius: 4px;
+    transition: transform 0.1s;
+}
+
+.hamburgerButton.opened div:nth-child(1) {
+    transform: translateY(2px) rotate(45deg);
+    width: 100%;
+    margin: 0;
+}
+
+.hamburgerButton.opened div:nth-child(2) {
+    display: none;
+}
+
+.hamburgerButton.opened div:nth-child(3) {
+    transform: translateY(-2px) rotate(-45deg);
+    width: 100%;
+    margin: 0;
+}
+
+@media screen and (min-width: 600px) {
+    .hamburgerButton {
+        width: 45px;
+        height: 45px; 
+    }
+
+    .hamburgerButton div {
+        margin: 4px 0;
+    }
+}

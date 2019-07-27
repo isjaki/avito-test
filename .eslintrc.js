@@ -22,7 +22,7 @@ module.exports = {
   ],
   rules: {
     "max-len": ["error", { "code": 120 }],
-    "indent": ["error", 4],
+    "indent": ["error", 4, { "SwitchCase": 1 }],
     "import/prefer-default-export": "off",
     "linebreak-style": ["error", "windows"],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
@@ -30,6 +30,7 @@ module.exports = {
     "react/jsx-indent": ["error", 4],
     "react/jsx-indent-props": ["error", 4],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "jsx-a11y/click-events-have-key-events": "off"
   },
 };

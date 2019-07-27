@@ -1,8 +1,20 @@
 .filtersWidget {
-    width: 450px;
-    height: 100vh;
-    padding: 15px;
-    box-shadow: -9px -1px 7px -4px #ccc;
+    width: 100%;
+    background-color: #fff;
+}
+
+.filtersWidget h2 {
+    margin: 0 0 20px;
+    font-size: 1.4rem;
+    font-weight: lighter;
+}
+
+.formElementContainer {
+    margin-bottom: 25px;
+}
+
+.categoryName {
+    margin: 0 0 14px;
 }
 
 .priceLabel {
@@ -10,6 +22,19 @@
 }
 
 .priceInput {
-    width: 100px;
+    width: 95px;
     margin-left: 8px;
+}
+
+.favoritesOnly {
+    font-size: 20px;
+}
+
+.categorySelect {
+    width: 90%;
+    height: 30px;
+    border-radius: 3px;
+    border: solid 1px #d4d8db;
+    padding: 3px;
+    font-size: 0.9rem;
 }
