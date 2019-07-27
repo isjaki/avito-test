@@ -6,6 +6,8 @@ import styles from './AdvertsList.css';
 const AdvertsList = () => (
     <div className={styles.advertsList}>
         <Advert />
+        <Advert />
+        <Advert />
     </div>
 );
 
