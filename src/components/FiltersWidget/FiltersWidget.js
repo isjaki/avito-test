@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Selector from '../UI/Selector/Selector';
 import styles from './FiltersWidget.css';
 
 const FiltersWidget = () => (
@@ -8,13 +9,15 @@ const FiltersWidget = () => (
         <form>
             <p className={styles.categoryName}>По категории:</p>
             <div className={styles.formElementContainer}>
-                <select className={styles.categorySelect}>
-                    <option value="all">Все</option>
-                    <option value="immovable">Недвижимость</option>
-                    <option value="cameras">Фотоаппараты</option>
-                    <option value="auto">Автомобили</option>
-                    <option value="laptops">Ноутбуки</option>
-                </select>
+                <Selector
+                    options={[
+                        { value: 'all', displayValue: 'Все' },
+                        { value: 'immovable', displayValue: 'Недвижимость' },
+                        { value: 'cameras', displayValue: 'Фотоаппараты' },
+                        { value: 'auto', displayValue: 'Автомобили' },
+                        { value: 'laptops', displayValue: 'Ноутбуки' },
+                    ]}
+                />
             </div>
             <p className={styles.categoryName}>По цене:</p>
             <div className={styles.formElementContainer}>

@@ -5,11 +5,12 @@
 
 .filtersWidget h2 {
     margin: 0 0 20px;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: lighter;
 }
 
 .formElementContainer {
+    max-width: 500px;
     margin-bottom: 25px;
 }
 
@@ -30,11 +31,8 @@
     font-size: 20px;
 }
 
-.categorySelect {
-    width: 90%;
-    height: 30px;
-    border-radius: 3px;
-    border: solid 1px #d4d8db;
-    padding: 3px;
-    font-size: 0.9rem;
+@media screen and (min-width: 600px) {
+    .filtersWidget h2 {
+        font-size: 1.4rem;
+    }
 }
