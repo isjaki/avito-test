@@ -7,6 +7,7 @@
     align-items: center;
     margin: 0 20px;
     cursor: pointer;
+    z-index: 3000;
 }
 
 .hamburgerButton div {
@@ -32,4 +33,15 @@
     transform: translateY(-2px) rotate(-45deg);
     width: 100%;
     margin: 0;
+}
+
+@media screen and (min-width: 600px) {
+    .hamburgerButton {
+        width: 45px;
+        height: 45px; 
+    }
+
+    .hamburgerButton div {
+        margin: 4px 0;
+    }
 }

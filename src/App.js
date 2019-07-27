@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from './components/Header/Header';
+import Header from './containers/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import AdvertsList from './components/AdvertsList/AdvertsList';
 import FiltersWidget from './components/FiltersWidget/FiltersWidget';
@@ -10,9 +10,9 @@ const App = () => (
     <div className={styles.app}>
         <Header />
         <AdvertsList />
-        <Sidebar>
+        {/* <Sidebar>
             <FiltersWidget />
-        </Sidebar>
+        </Sidebar> */}
     </div>
 );
 

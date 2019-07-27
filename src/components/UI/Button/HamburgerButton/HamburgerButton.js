@@ -1,53 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import styles from './HamburgerButton.css';
 
-class HamburgerButton extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpened: false,
-        };
+const HamburgerButton = ({ isOpened, onClick }) => {
+    const classes = classNames({
+        [styles.hamburgerButton]: true,
+        [styles.opened]: isOpened,
+    });
 
-        this.toggleButton = this.toggleButton.bind(this);
-    }
-
-    toggleButton() {
-        // const { onClick } = this.props;
-
-        this.setState(prevState => ({
-            isOpened: !prevState.isOpened,
-        }));
-
-        // onClick();
-    }
-
-    render() {
-        const { isOpened } = this.state;
-        const classes = [styles.hamburgerButton];
-
-        if (isOpened) {
-            classes.push(styles.opened);
-        }
-
-        return (
-            <div
-                className={classes.join(' ')}
-                onClick={this.toggleButton}
-                onKeyUp={this.toggleButton}
-                role="button"
-                tabIndex={0}
-            >
-                <div />
-                <div />
-                <div />
-            </div>
-        );
-    }
-}
+    return (
+        <div
+            className={classes}
+            onClick={onClick}
+            role="button"
+            tabIndex={0}
+        >
+            <div />
+            <div />
+            <div />
+        </div>
+    );
+};
 
 HamburgerButton.propTypes = {
+    isOpened: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
 };
 
