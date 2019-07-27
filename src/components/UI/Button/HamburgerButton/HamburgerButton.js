@@ -14,7 +14,7 @@ class HamburgerButton extends Component {
     }
 
     toggleButton() {
-        const { onClick } = this.props;
+        // const { onClick } = this.props;
 
         this.setState(prevState => ({
             isOpened: !prevState.isOpened,
