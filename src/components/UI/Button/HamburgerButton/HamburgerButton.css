@@ -15,4 +15,21 @@
     margin: 3px 0;
     background-color: #0575e6;
     border-radius: 4px;
+    transition: transform 0.1s;
+}
+
+.hamburgerButton.opened div:nth-child(1) {
+    transform: translateY(2px) rotate(45deg);
+    width: 100%;
+    margin: 0;
+}
+
+.hamburgerButton.opened div:nth-child(2) {
+    display: none;
+}
+
+.hamburgerButton.opened div:nth-child(3) {
+    transform: translateY(-2px) rotate(-45deg);
+    width: 100%;
+    margin: 0;
 }
