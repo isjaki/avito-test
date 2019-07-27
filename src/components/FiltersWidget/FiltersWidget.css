@@ -1,14 +1,6 @@
 .filtersWidget {
-    width: 20%;
-    height: 100vh;
-    padding: 15px;
-    box-shadow: -7px -1px 7px -4px #ccc;
+    width: 100%;
     background-color: #fff;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-    box-sizing: border-box;
 }
 
 .filtersWidget h2 {

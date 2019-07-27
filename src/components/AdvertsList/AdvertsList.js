@@ -4,11 +4,11 @@ import Advert from '../Advert/Advert';
 import styles from './AdvertsList.css';
 
 const AdvertsList = () => (
-    <div className={styles.advertsList}>
+    <main className={styles.advertsList}>
         <Advert />
         <Advert />
         <Advert />
-    </div>
+    </main>
 );
 
 export default AdvertsList;
