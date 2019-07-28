@@ -1,6 +1,9 @@
 .sidebar {
+    display: none;
     width: 20%;
+    min-width: 300px;
     height: 100vh;
+    margin-top: 60px;
     padding: 15px;
     box-shadow: -7px -1px 7px -4px #ccc;
     background-color: #fff;
@@ -9,4 +12,10 @@
     right: 0;
     z-index: 1000;
     box-sizing: border-box;
+}
+
+@media screen and (min-width: 960px) {
+    .sidebar {
+        display: block;
+    }
 }
