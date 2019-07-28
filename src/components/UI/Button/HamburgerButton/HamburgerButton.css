@@ -46,3 +46,9 @@
         margin: 4px 0;
     }
 }
+
+@media screen and (min-width: 960px) {
+    .hamburgerButton {
+        display: none;
+    }
+}

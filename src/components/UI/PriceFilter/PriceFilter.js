@@ -47,6 +47,7 @@ class PriceFilter extends Component {
                         id="priceFrom"
                         value={priceFrom}
                         className={styles.priceInput}
+                        autoComplete="off"
                         onChange={this.handleInputChange}
                     />
                 </label>
@@ -57,6 +58,7 @@ class PriceFilter extends Component {
                         id="priceTo"
                         value={priceTo}
                         className={styles.priceInput}
+                        autoComplete="off"
                         onChange={this.handleInputChange}
                     />
                 </label>
