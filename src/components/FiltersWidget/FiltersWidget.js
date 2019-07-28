@@ -1,15 +1,16 @@
 import React from 'react';
 
 import PriceFilter from '../UI/PriceFilter/PriceFilter';
+import FormElementContainer from '../UI/FormElementContainer/FormElementContainer';
 import Selector from '../UI/Selector/Selector';
+import Button from '../UI/Button/Button';
 import styles from './FiltersWidget.css';
 
 const FiltersWidget = () => (
     <div className={styles.filtersWidget}>
         <h2>Фильтровать объявления</h2>
         <form>
-            <p className={styles.categoryName}>По категории:</p>
-            <div className={styles.formElementContainer}>
+            <FormElementContainer label="По категории:">
                 <Selector
                     options={[
                         { value: 'all', displayValue: 'Все' },
@@ -19,14 +20,13 @@ const FiltersWidget = () => (
                         { value: 'laptops', displayValue: 'Ноутбуки' },
                     ]}
                 />
-            </div>
-            <p className={styles.categoryName}>По цене:</p>
-            <div className={styles.formElementContainer}>
+            </FormElementContainer>
+            <FormElementContainer label="По цене:">
                 <PriceFilter />
-            </div>
-            <div className={styles.formElementContainer}>
-                <button type="button">Только избранное</button>
-            </div>
+            </FormElementContainer>
+            <FormElementContainer>
+                <Button buttonType="favorites" />
+            </FormElementContainer>
         </form>
     </div>
 );
