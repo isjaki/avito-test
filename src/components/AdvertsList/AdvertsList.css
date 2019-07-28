@@ -6,3 +6,15 @@
     background-color: #f0f0f0;
     box-sizing: border-box;
 }
+
+@media screen and (min-width: 960px) {
+    .advertsList {
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .advertsList {
+        width: calc(100% - 400px);
+    }
+}
