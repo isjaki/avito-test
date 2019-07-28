@@ -6,7 +6,7 @@ import styles from './Selector.css';
 const Selector = ({ options, value }) => (
     <select value={value} className={styles.selector}>
         {options.map(option => (
-            <option value={option.value}>{option.displayValue}</option>
+            <option key={option.value} value={option.value}>{option.displayValue}</option>
         ))}
     </select>
 );

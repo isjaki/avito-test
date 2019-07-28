@@ -1,35 +1,32 @@
 import React from 'react';
 
+import PriceFilter from '../UI/PriceFilter/PriceFilter';
+import FormElementContainer from '../UI/FormElementContainer/FormElementContainer';
+import Selector from '../UI/Selector/Selector';
+import Button from '../UI/Button/Button';
 import styles from './FiltersWidget.css';
 
 const FiltersWidget = () => (
     <div className={styles.filtersWidget}>
         <h2>Фильтровать объявления</h2>
         <form>
-            <p className={styles.categoryName}>По категории:</p>
-            <div className={styles.formElementContainer}>
-                <select className={styles.categorySelect}>
-                    <option value="all">Все</option>
-                    <option value="immovable">Недвижимость</option>
-                    <option value="cameras">Фотоаппараты</option>
-                    <option value="auto">Автомобили</option>
-                    <option value="laptops">Ноутбуки</option>
-                </select>
-            </div>
-            <p className={styles.categoryName}>По цене:</p>
-            <div className={styles.formElementContainer}>
-                <label htmlFor="priceFrom" className={styles.priceLabel}>
-                    С
-                    <input type="text" id="priceFrom" className={styles.priceInput} />
-                </label>
-                <label htmlFor="priceTo" className={styles.priceLabel}>
-                    До
-                    <input type="text" id="priceTo" className={styles.priceInput} />
-                </label>
-            </div>
-            <div className={styles.formElementContainer}>
-                <button type="button">Только избранное</button>
-            </div>
+            <FormElementContainer label="По категории:">
+                <Selector
+                    options={[
+                        { value: 'all', displayValue: 'Все' },
+                        { value: 'immovable', displayValue: 'Недвижимость' },
+                        { value: 'cameras', displayValue: 'Фотоаппараты' },
+                        { value: 'auto', displayValue: 'Автомобили' },
+                        { value: 'laptops', displayValue: 'Ноутбуки' },
+                    ]}
+                />
+            </FormElementContainer>
+            <FormElementContainer label="По цене:">
+                <PriceFilter />
+            </FormElementContainer>
+            <FormElementContainer>
+                <Button buttonType="favorites" />
+            </FormElementContainer>
         </form>
     </div>
 );

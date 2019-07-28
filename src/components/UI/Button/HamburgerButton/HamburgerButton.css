@@ -5,7 +5,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 20px;
+    margin: 0 auto 0 0;
+    padding-right: 20px;
     cursor: pointer;
     z-index: 3000;
 }
@@ -14,7 +15,7 @@
     width: 85%;
     height: 4px;
     margin: 3px 0;
-    background-color: #0575e6;
+    background-color: #0070c9;
     border-radius: 4px;
     transition: transform 0.1s;
 }
@@ -43,5 +44,11 @@
 
     .hamburgerButton div {
         margin: 4px 0;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .hamburgerButton {
+        display: none;
     }
 }

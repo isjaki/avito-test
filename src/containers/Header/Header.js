@@ -40,9 +40,8 @@ class Header extends Component {
                 <Selector
                     value="laptops"
                     options={[
-                        { value: 'all', displayValue: 'Все' },
-                        { value: 'immobile', displayValue: 'Недвижимость' },
-                        { value: 'laptops', displayValue: 'Ноутбуки' },
+                        { value: 'byPopularity', displayValue: 'По популярности' },
+                        { value: 'byPrice', displayValue: 'По возрастанию цены' },
                     ]}
                 />
             </header>

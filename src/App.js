@@ -10,9 +10,9 @@ const App = () => (
     <div className={styles.app}>
         <Header />
         <AdvertsList />
-        {/* <Sidebar>
+        <Sidebar>
             <FiltersWidget />
-        </Sidebar> */}
+        </Sidebar>
     </div>
 );
 

@@ -1,0 +1,22 @@
+.button {
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: bolder;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: #0070c9;
+    color: #fff;
+}
+
+.button.favorites {
+    border: 2px solid #0070c9;
+    color: #0070c9;
+    background-color: #fff;
+}
+
+.button.favorites.active {
+    color: #fff;
+    background-color: #0070c9;
+}
