@@ -1,5 +1,6 @@
 import React from 'react';
 
+import PriceFilter from '../UI/PriceFilter/PriceFilter';
 import Selector from '../UI/Selector/Selector';
 import styles from './FiltersWidget.css';
 
@@ -21,14 +22,7 @@ const FiltersWidget = () => (
             </div>
             <p className={styles.categoryName}>По цене:</p>
             <div className={styles.formElementContainer}>
-                <label htmlFor="priceFrom" className={styles.priceLabel}>
-                    С
-                    <input type="text" id="priceFrom" className={styles.priceInput} />
-                </label>
-                <label htmlFor="priceTo" className={styles.priceLabel}>
-                    До
-                    <input type="text" id="priceTo" className={styles.priceInput} />
-                </label>
+                <PriceFilter />
             </div>
             <div className={styles.formElementContainer}>
                 <button type="button">Только избранное</button>

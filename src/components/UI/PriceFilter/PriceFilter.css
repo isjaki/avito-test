@@ -1,0 +1,21 @@
+.priceFilter {
+    width: 100%;
+    display: flex;
+}
+
+.priceLabel {
+    display: flex;
+    flex: 1;
+    font-size: 0.9rem;
+    min-width: 0;
+}
+
+.priceLabel:nth-child(2) {
+    margin-left: 10px;
+}
+
+.priceInput {
+    margin-left: 8px;
+    flex: 1;
+    min-width: 0;
+}
