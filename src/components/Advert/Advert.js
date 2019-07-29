@@ -1,6 +1,7 @@
 import React from 'react';
 
 import RatingWidget from '../UI/RatingWidget/RatingWidget';
+import Button from '../UI/Button/Button';
 import styles from './Advert.css';
 
 const Advert = () => (
@@ -19,6 +20,7 @@ const Advert = () => (
                 Вольво-центр Юг <RatingWidget rating={4.5} />
             </p>
         </div>
+        <Button buttonType="addToFavorites" />
     </div>
 );
 

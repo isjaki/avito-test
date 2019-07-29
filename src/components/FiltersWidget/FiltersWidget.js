@@ -25,7 +25,7 @@ const FiltersWidget = () => (
                 <PriceFilter />
             </FormElementContainer>
             <FormElementContainer>
-                <Button buttonType="favorites" />
+                <Button buttonType="pickFavorites" />
             </FormElementContainer>
         </form>
     </div>
