@@ -9,22 +9,21 @@
     font-size: 0.95rem;
     display: flex;
     box-sizing: border-box;
+    position: relative;
 }
 
-.title {
-    margin: 0 0 5px;
-    font-size: 0.9rem;
+.title, .price {
+    margin: 0 0 10px;
+    font-size: 0.8rem;
 }
 
 .price {
     font-weight: bolder;
-    margin: 0 0 5px;
-    font-size: 0.9rem;
 }
 
 .sellerInfo {
     margin: 0 0 5px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 .imageContainer {
@@ -35,6 +34,7 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .imageContainer img {
@@ -42,17 +42,53 @@
     height: auto;
 }
 
+.additionalPhotos {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 100%;
+    background-color: rgba(0, 112, 201, 0.9);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .mainInfo {
     width: 55%;
 }
 
+@media screen and (min-width: 400px) {
+    .sellerInfo {
+        font-size: 0.8rem;
+    }
+}
+
 @media screen and (min-width: 500px) {
+    .imageContainer {
+        margin-right: 10px;
+    }
+
+    .additionalPhotos {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (min-width: 960px) {
     .title, .price, .sellerInfo {
         font-size: 1rem;
     }
 
-    .imageContainer {
-        margin-right: 10px;
+    .additionalPhotos {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
 }
 

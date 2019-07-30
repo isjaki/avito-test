@@ -7,14 +7,18 @@ import styles from './Button.css';
 const Button = ({ children, buttonType }) => {
     const classes = classNames({
         [styles.button]: true,
-        [styles.favorites]: buttonType === 'favorites',
-        [styles.sorting]: buttonType === 'sorting',
+        [styles.active]: false,
+        [styles.pickFavorites]: buttonType === 'pickFavorites',
+        [styles.addToFavorites]: buttonType === 'addToFavorites',
     });
 
     let buttonContent = null;
     switch (buttonType) {
-        case 'favorites':
+        case 'pickFavorites':
             buttonContent = <span><i className="fas fa-heart" /> Только избранное</span>;
+            break;
+        case 'addToFavorites':
+            buttonContent = <i className="fas fa-heart" />;
             break;
         default:
             buttonContent = children;

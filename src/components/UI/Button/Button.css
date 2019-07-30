@@ -10,13 +10,36 @@
     color: #fff;
 }
 
-.button.favorites {
+.button.pickFavorites {
     border: 2px solid #0070c9;
     color: #0070c9;
     background-color: #fff;
 }
 
-.button.favorites.active {
+.button.pickFavorites.active {
     color: #fff;
     background-color: #0070c9;
+}
+
+.button.addToFavorites {
+    color: #c2c1c0;
+    font-size: 1.4rem;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+}
+
+.button.addToFavorites.active {
+    color: #0070c9;
+}
+
+@media screen and (min-width: 960px) {
+    .button.addToFavorites {
+        font-size: 2rem;
+        right: 20px;
+        bottom: 15px;
+    }
 }
