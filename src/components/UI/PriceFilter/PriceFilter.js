@@ -17,8 +17,9 @@ class PriceFilter extends Component {
 
     handleInputChange(event) {
         const inputValue = event.target.value;
+        const isNumber = /^[0-9]*\.?[0-9]*$/.test(inputValue);
 
-        if (!/^[0-9]*\.?[0-9]*$/.test(inputValue)) return;
+        if (!isNumber) return;
 
         this.setState({ [event.target.id]: inputValue }, () => {
             this.forwardInputValues();
