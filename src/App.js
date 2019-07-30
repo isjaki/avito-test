@@ -2,14 +2,14 @@ import React from 'react';
 
 import Header from './containers/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
-import AdvertsList from './components/AdvertsList/AdvertsList';
+import AdvertList from './components/AdvertList/AdvertList';
 import FiltersWidget from './components/FiltersWidget/FiltersWidget';
 import styles from './App.css';
 
 const App = () => (
     <div className={styles.app}>
         <Header />
-        <AdvertsList />
+        <AdvertList />
         <Sidebar>
             <FiltersWidget />
         </Sidebar>
