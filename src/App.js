@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from './containers/Header/Header';
+import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import AdvertList from './components/AdvertList/AdvertList';
 import FiltersWidget from './components/FiltersWidget/FiltersWidget';

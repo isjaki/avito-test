@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import FiltersWidget from '../../components/FiltersWidget/FiltersWidget';
-import Selector from '../../components/UI/Selector/Selector';
-import SideDrawer from '../../components/SideDrawer/SideDrawer';
-import HamburgerButton from '../../components/UI/Button/HamburgerButton/HamburgerButton';
+import FiltersWidget from '../FiltersWidget/FiltersWidget';
+import Selector from '../UI/Selector/Selector';
+import SideDrawer from '../SideDrawer/SideDrawer';
+import HamburgerButton from '../UI/Button/HamburgerButton/HamburgerButton';
 import styles from './Header.css';
 
 class Header extends Component {

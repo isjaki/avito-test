@@ -4,12 +4,12 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import advertListReducer from './store/reducers/advertList';
+import appReducer from './store/reducers/app';
 
 import App from './App';
 import './index.css';
 
-const rootReducer = advertListReducer;
+const rootReducer = appReducer;
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
