@@ -1,20 +1,24 @@
-.advertsList {
+.advertContainer {
     width: 100%;
     min-height: 100vh;
     padding: 10px;
     padding-top: 80px;
     background-color: #fff;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 @media screen and (min-width: 960px) {
-    .advertsList {
+    .advertContainer {
         width: 75%;
     }
 }
 
 @media screen and (min-width: 1600px) {
-    .advertsList {
+    .advertContainer {
         width: calc(100% - 400px);
     }
 }
