@@ -2,12 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Advert from '../Advert/Advert';
-import styles from './AdvertList.css';
 
 const AdvertList = ({ adverts }) => (
-    <main className={styles.advertsList}>
-        {adverts.map(advert => <Advert key={advert.id} />)}
-    </main>
+    adverts.map(advert => <Advert key={advert.id} />)
 );
 
 AdvertList.propTypes = {
