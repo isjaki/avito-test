@@ -18,10 +18,12 @@ export const fetchAdverts = () => (dispatch) => {
     dispatch(fetchAdvertsStart());
     fetch('http://avito.dump.academy/products')
         .then(res => res.json())
-        .then((json) => {
-            dispatch(fetchAdvertsSuccess(json.data));
+        .then((res) => {
+            console.log(res);
+            dispatch(fetchAdvertsSuccess(res.data));
         })
         .catch((error) => {
+            console.log(error);
             dispatch(fetchAdvertsFail(error));
         });
 };
