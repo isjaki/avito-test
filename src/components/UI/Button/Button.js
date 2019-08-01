@@ -4,10 +4,12 @@ import classNames from 'classnames';
 
 import styles from './Button.css';
 
-const Button = ({ children, buttonType }) => {
+const Button = ({
+    children, buttonType, isActive, onClick,
+}) => {
     const classes = classNames({
         [styles.button]: true,
-        [styles.active]: false,
+        [styles.active]: isActive,
         [styles.pickFavorites]: buttonType === 'pickFavorites',
         [styles.addToFavorites]: buttonType === 'addToFavorites',
     });
@@ -28,6 +30,7 @@ const Button = ({ children, buttonType }) => {
         <button
             type="button"
             className={classes}
+            onClick={onClick}
         >
             {buttonContent}
         </button>
@@ -40,6 +43,12 @@ Button.propTypes = {
         PropTypes.string,
     ]).isRequired,
     buttonType: PropTypes.string.isRequired,
+    isActive: PropTypes.bool,
+    onClick: PropTypes.func.isRequired,
+};
+
+Button.defaultProps = {
+    isActive: false,
 };
 
 export default Button;

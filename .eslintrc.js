@@ -31,6 +31,9 @@ module.exports = {
     "react/jsx-indent-props": ["error", 4],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-one-expression-per-line": "off",
-    "jsx-a11y/click-events-have-key-events": "off"
+    "jsx-a11y/click-events-have-key-events": "off",
+    "object-curly-newline": ["error", { 
+      "ImportDeclaration": { "multiline": true, "minProperties": 6 }  
+    }]
   },
 };
