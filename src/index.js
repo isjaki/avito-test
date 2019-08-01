@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import advertControllerReducer from './store/reducers/advertController';
+import advertController from './store/reducers/advertController';
+import filters from './store/reducers/filters';
 
 import App from './App';
 import './index.css';
 
-const rootReducer = advertControllerReducer;
+const rootReducer = combineReducers({
+    advertController,
+    filters,
+});
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(
