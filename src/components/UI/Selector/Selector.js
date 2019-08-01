@@ -16,11 +16,15 @@ class Selector extends Component {
     }
 
     handleSelectorChange(event) {
-        const { onSelectorChange } = this.props;
-        const { value } = this.state;
         this.setState({ value: event.target.value }, () => {
-            onSelectorChange(value);
+            this.forwardSelectorValue();
         });
+    }
+
+    forwardSelectorValue() {
+        const { value } = this.state;
+        const { onSelectorChange } = this.props;
+        onSelectorChange(value);
     }
 
     render() {
