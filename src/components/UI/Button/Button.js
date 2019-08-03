@@ -41,7 +41,7 @@ Button.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.element,
         PropTypes.string,
-    ]).isRequired,
+    ]),
     buttonType: PropTypes.string.isRequired,
     isActive: PropTypes.bool,
     onClick: PropTypes.func.isRequired,
@@ -49,6 +49,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
     isActive: false,
+    children: '',
 };
 
 export default Button;

@@ -32,7 +32,7 @@ ProductList.propTypes = {
     products: PropTypes.arrayOf(PropTypes.object).isRequired,
     addProductToFavorites: PropTypes.func.isRequired,
     removeProductFromFavorites: PropTypes.func.isRequired,
-    favoriteProductIds: PropTypes.func.isRequired,
+    favoriteProductIds: PropTypes.objectOf(PropTypes.bool).isRequired,
 };
 
 export default ProductList;
