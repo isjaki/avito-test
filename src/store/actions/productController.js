@@ -28,34 +28,35 @@ export const fetchProducts = () => (dispatch) => {
         });
 };
 
-export const setFavoritesToState = favorites => ({
+export const setFavoritesToState = favoriteProductIds => ({
     type: actionTypes.SET_FAVORITES_TO_STATE,
-    favorites,
+    favoriteProductIds,
 });
 
 export const addProductToFavorites = productId => (dispatch) => {
-    const favorites = JSON.parse(localStorage.getItem('favorites'));
-    favorites[productId] = true;
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    const favoriteProductIds = JSON.parse(localStorage.getItem('favoriteProductIds'));
+    favoriteProductIds[productId] = true;
+    localStorage.setItem('favoriteProductIds', JSON.stringify(favoriteProductIds));
 
-    dispatch(setFavoritesToState(favorites));
+    dispatch(setFavoritesToState(favoriteProductIds));
 };
 
 export const removeProductFromFavorites = productId => (dispatch) => {
-    const favorites = JSON.parse(localStorage.getItem('favorites'));
-    delete favorites[productId];
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    const favoriteProductIds = JSON.parse(localStorage.getItem('favoriteProductIds'));
+    delete favoriteProductIds[productId];
+    localStorage.setItem('favorites', JSON.stringify(favoriteProductIds));
 
-    dispatch(setFavoritesToState(favorites));
+    dispatch(setFavoritesToState(favoriteProductIds));
 };
 
 export const retrieveFavoritesFromLocalStorage = () => (dispatch) => {
-    let favorites = localStorage.getItem('favorites');
-    if (favorites === null) {
-        favorites = {};
+    let favoriteProductIds = localStorage.getItem('favoriteProductIds');
+    if (favoriteProductIds === null) {
+        localStorage.setItem('favoriteProductIds', '{}');
+        favoriteProductIds = {};
     } else {
-        favorites = JSON.parse(favorites);
+        favoriteProductIds = JSON.parse(favoriteProductIds);
     }
 
-    dispatch(setFavoritesToState(favorites));
+    dispatch(setFavoritesToState(favoriteProductIds));
 };

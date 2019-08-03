@@ -26,7 +26,7 @@ const fetchProductsFail = (state, action) => ({
 
 const setFavoritesToState = (state, action) => ({
     ...state,
-    favoriteProductIds: action.favorites,
+    favoriteProductIds: action.favoriteProductIds,
 });
 
 const reducer = (state = initialState, action) => {

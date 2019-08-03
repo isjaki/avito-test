@@ -9,8 +9,9 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 
 class ProductController extends Component {
     componentDidMount() {
-        const { fetchProducts } = this.props;
+        const { fetchProducts, retrieveFavoritesFromLocalStorage } = this.props;
         fetchProducts();
+        retrieveFavoritesFromLocalStorage();
     }
 
     // applyFilters() {
@@ -40,6 +41,7 @@ ProductController.propTypes = {
         priceTo: PropTypes.number,
     }).isRequired,
     isFavoritesOnly: PropTypes.bool.isRequired,
+    retrieveFavoritesFromLocalStorage: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -52,6 +54,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchProducts: () => dispatch(productControllerActions.fetchProducts()),
+    retrieveFavoritesFromLocalStorage: () => dispatch(productControllerActions.retrieveFavoritesFromLocalStorage()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductController);
