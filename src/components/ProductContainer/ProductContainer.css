@@ -1,4 +1,4 @@
-.advertContainer {
+.productContainer {
     width: 100%;
     min-height: 100vh;
     padding: 10px;
@@ -12,13 +12,13 @@
 }
 
 @media screen and (min-width: 960px) {
-    .advertContainer {
+    .productContainer {
         width: 75%;
     }
 }
 
 @media screen and (min-width: 1600px) {
-    .advertContainer {
+    .productContainer {
         width: calc(100% - 400px);
     }
 }

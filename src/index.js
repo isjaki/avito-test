@@ -4,14 +4,14 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import advertController from './store/reducers/advertController';
+import productController from './store/reducers/productController';
 import filters from './store/reducers/filters';
 
 import App from './App';
 import './index.css';
 
 const rootReducer = combineReducers({
-    advertController,
+    productController,
     filters,
 });
 

@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import * as advertControllerActions from '../../store/actions/advertController';
+import * as productControllerActions from '../../store/actions/productController';
 
-import AdvertList from '../../components/AdvertList/AdvertList';
+import ProductList from '../../components/ProductList/ProductList';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-class AdvertController extends Component {
+class ProductController extends Component {
     componentDidMount() {
-        const { fetchAdverts } = this.props;
-        fetchAdverts();
+        const { fetchProducts } = this.props;
+        fetchProducts();
     }
 
     // applyFilters() {
@@ -22,17 +22,17 @@ class AdvertController extends Component {
     // }
 
     render() {
-        const { adverts, loading } = this.props;
+        const { products, loading } = this.props;
 
         return (
-            loading ? <Spinner /> : <AdvertList adverts={adverts} />
+            loading ? <Spinner /> : <ProductList products={products} />
         );
     }
 }
 
-AdvertController.propTypes = {
-    fetchAdverts: PropTypes.func.isRequired,
-    adverts: PropTypes.arrayOf(PropTypes.object).isRequired,
+ProductController.propTypes = {
+    fetchProducts: PropTypes.func.isRequired,
+    products: PropTypes.arrayOf(PropTypes.object).isRequired,
     loading: PropTypes.bool.isRequired,
     category: PropTypes.string.isRequired,
     price: PropTypes.shape({
@@ -43,15 +43,15 @@ AdvertController.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    adverts: state.advertController.adverts,
-    loading: state.advertController.loading,
+    products: state.productController.products,
+    loading: state.productController.loading,
     category: state.filters.category,
     price: state.filters.price,
     isFavoritesOnly: state.filters.isFavoritesOnly,
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchAdverts: () => dispatch(advertControllerActions.fetchAdverts()),
+    fetchProducts: () => dispatch(productControllerActions.fetchProducts()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdvertController);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductController);

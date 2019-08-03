@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import RatingWidget from '../UI/RatingWidget/RatingWidget';
 import Button from '../UI/Button/Button';
-import styles from './Advert.css';
+import styles from './Product.css';
 
-const Advert = ({ title, price, pictures }) => (
-    <div className={styles.advert}>
+const Product = ({ title, price, pictures }) => (
+    <div className={styles.product}>
         <div className={styles.imageContainer}>
             <img
                 alt="product"
@@ -25,10 +25,10 @@ const Advert = ({ title, price, pictures }) => (
     </div>
 );
 
-Advert.propTypes = {
+Product.propTypes = {
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     pictures: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default Advert;
+export default Product;
