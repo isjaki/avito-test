@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import ProductPicture from './ProductPicture/ProductPicture';
+import ProductPrice from './ProductPrice/ProductPrice';
 import RatingWidget from '../UI/RatingWidget/RatingWidget';
 import Button from '../UI/Button/Button';
 import styles from './Product.css';
@@ -13,16 +15,10 @@ const Product = ({
     onAddToFavoritesButtonClick,
 }) => (
     <div className={styles.product}>
-        <div className={styles.imageContainer}>
-            <img
-                alt="product"
-                src={pictures[0]}
-            />
-            <div className={styles.additionalPhotos}><span>+{pictures.length - 1}</span></div>
-        </div>
+        <ProductPicture pictures={pictures} />
         <div className={styles.mainInfo}>
             <h2 className={styles.title}>{title}</h2>
-            <p className={styles.price}>{price} &#8381;</p>
+            <ProductPrice price={price} />
             <p className={styles.sellerInfo}>
                 Вольво-центр Юг <RatingWidget rating={4.5} />
             </p>

@@ -12,53 +12,14 @@
     position: relative;
 }
 
-.title, .price {
+.title {
     margin: 0 0 10px;
     font-size: 0.8rem;
-}
-
-.price {
-    font-weight: bolder;
 }
 
 .sellerInfo {
     margin: 0 0 5px;
     font-size: 0.7rem;
-}
-
-.imageContainer {
-    width: 45%;
-    padding-bottom: 45%;
-    max-width: 350px;
-    margin-right: 5px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.imageContainer img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.additionalPhotos {
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    border-radius: 100%;
-    background-color: rgba(0, 112, 201, 0.9);
-    color: #fff;
-    font-size: 0.8rem;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .mainInfo {
@@ -71,26 +32,8 @@
     }
 }
 
-@media screen and (min-width: 500px) {
-    .imageContainer {
-        margin-right: 10px;
-    }
-
-    .additionalPhotos {
-        width: 30px;
-        height: 30px;
-        font-size: 0.9rem;
-    }
-}
-
 @media screen and (min-width: 960px) {
     .title, .price, .sellerInfo {
-        font-size: 1rem;
-    }
-
-    .additionalPhotos {
-        width: 35px;
-        height: 35px;
         font-size: 1rem;
     }
 }
