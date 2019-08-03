@@ -12,3 +12,15 @@ export const debounce = (func, ms) => {
         }, ms);
     };
 };
+
+export const formatPrice = price => price
+    .split('')
+    .reverse()
+    .map((num, i) => {
+        if ((i + 1) % 3 === 0) {
+            return ` ${num}`;
+        }
+        return num;
+    })
+    .reverse()
+    .join('');
