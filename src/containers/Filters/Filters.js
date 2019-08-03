@@ -20,9 +20,9 @@ const selectorOptions = [
 ];
 
 const Filters = ({
-    setCategoryFilter,
-    setPriceFilter,
-    setFavoritesOnlyFilter,
+    updateCategoryFilter,
+    updatePriceFilter,
+    updateFavoritesOnlyFilter,
     isFavoritesOnly,
 }) => (
     <Fragment>
@@ -30,16 +30,16 @@ const Filters = ({
             <Selector
                 options={selectorOptions}
                 initialValue="all"
-                onSelectorChange={setCategoryFilter}
+                onSelectorChange={updateCategoryFilter}
             />
         </FormElementContainer>
         <FormElementContainer label="По цене:">
-            <PriceFilter onPriceChange={debounce(setPriceFilter, 800)} />
+            <PriceFilter onPriceChange={debounce(updatePriceFilter, 800)} />
         </FormElementContainer>
         <FormElementContainer>
             <Button
                 buttonType="pickFavorites"
-                onClick={setFavoritesOnlyFilter}
+                onClick={updateFavoritesOnlyFilter}
                 isActive={isFavoritesOnly}
             />
         </FormElementContainer>
@@ -47,9 +47,9 @@ const Filters = ({
 );
 
 Filters.propTypes = {
-    setCategoryFilter: PropTypes.func.isRequired,
-    setPriceFilter: PropTypes.func.isRequired,
-    setFavoritesOnlyFilter: PropTypes.func.isRequired,
+    updateCategoryFilter: PropTypes.func.isRequired,
+    updatePriceFilter: PropTypes.func.isRequired,
+    updateFavoritesOnlyFilter: PropTypes.func.isRequired,
     isFavoritesOnly: PropTypes.bool.isRequired,
 };
 
@@ -58,9 +58,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    setCategoryFilter: categoryType => dispatch(filterActions.setCategoryFilter(categoryType)),
-    setPriceFilter: (priceFrom, priceTo) => dispatch(filterActions.setPriceFilter(priceFrom, priceTo)),
-    setFavoritesOnlyFilter: () => dispatch(filterActions.setFavoritesOnlyFilter()),
+    updateCategoryFilter: categoryType => dispatch(filterActions.updateCategoryFilter(categoryType)),
+    updatePriceFilter: (priceFrom, priceTo) => dispatch(filterActions.updatePriceFilter(priceFrom, priceTo)),
+    updateFavoritesOnlyFilter: () => dispatch(filterActions.updateFavoritesOnlyFilter()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);

@@ -14,9 +14,9 @@ class ProductController extends Component {
     }
 
     // applyFilters() {
-    //     const { category, price, isFavoritesOnly, adverts } = this.props;
+    //     const { category, price, isFavoritesOnly, products } = this.props;
 
-    //     return adverts.filter(advert => {
+    //     return products.filter(product => {
 
     //     })
     // }
