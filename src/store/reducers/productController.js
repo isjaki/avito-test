@@ -2,6 +2,7 @@ import * as actionTypes from '../actionTypes';
 
 const initialState = {
     products: [],
+    favoriteProductIds: {},
     loading: false,
     error: null,
 };
@@ -23,6 +24,11 @@ const fetchProductsFail = (state, action) => ({
     error: action.error,
 });
 
+const setFavoritesToState = (state, action) => ({
+    ...state,
+    favoriteProductIds: action.favorites,
+});
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_PRODUCTS_START:
@@ -31,6 +37,8 @@ const reducer = (state = initialState, action) => {
             return fetchProductsSuccess(state, action);
         case actionTypes.FETCH_PRODUCTS_FAIL:
             return fetchProductsFail(state, action);
+        case actionTypes.SET_FAVORITES_TO_STATE:
+            return setFavoritesToState(state, action);
         default:
             return state;
     }

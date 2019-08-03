@@ -27,3 +27,35 @@ export const fetchProducts = () => (dispatch) => {
             dispatch(fetchProductsFail(error));
         });
 };
+
+export const setFavoritesToState = favorites => ({
+    type: actionTypes.SET_FAVORITES_TO_STATE,
+    favorites,
+});
+
+export const addProductToFavorites = productId => (dispatch) => {
+    const favorites = JSON.parse(localStorage.getItem('favorites'));
+    favorites[productId] = true;
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+
+    dispatch(setFavoritesToState(favorites));
+};
+
+export const removeProductFromFavorites = productId => (dispatch) => {
+    const favorites = JSON.parse(localStorage.getItem('favorites'));
+    delete favorites[productId];
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+
+    dispatch(setFavoritesToState(favorites));
+};
+
+export const retrieveFavoritesFromLocalStorage = () => (dispatch) => {
+    let favorites = localStorage.getItem('favorites');
+    if (favorites === null) {
+        favorites = {};
+    } else {
+        favorites = JSON.parse(favorites);
+    }
+
+    dispatch(setFavoritesToState(favorites));
+};
