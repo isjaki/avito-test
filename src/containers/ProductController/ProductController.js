@@ -42,15 +42,27 @@ class ProductController extends Component {
     }
 
     render() {
-        const { products, loading } = this.props;
+        const {
+            products,
+            loading,
+            addProductToFavorites,
+            removeProductFromFavorites,
+            favoriteProductIds,
+        } = this.props;
 
         const filteredProducts = this.applyFiltersToProducts(products);
 
         console.log('filteredProducts', filteredProducts);
 
-        return (
-            loading ? <Spinner /> : <ProductList products={filteredProducts} />
-        );
+        return loading ? <Spinner />
+            : (
+                <ProductList
+                    products={filteredProducts}
+                    addProductToFavorites={addProductToFavorites}
+                    removeProductFromFavorites={removeProductFromFavorites}
+                    favoriteProductIds={favoriteProductIds}
+                />
+            );
     }
 }
 
@@ -66,6 +78,8 @@ ProductController.propTypes = {
     isFavoritesOnly: PropTypes.bool.isRequired,
     retrieveFavoritesFromLocalStorage: PropTypes.func.isRequired,
     favoriteProductIds: PropTypes.objectOf(PropTypes.bool).isRequired,
+    addProductToFavorites: PropTypes.func.isRequired,
+    removeProductFromFavorites: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -80,6 +94,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     fetchProducts: () => dispatch(productControllerActions.fetchProducts()),
     retrieveFavoritesFromLocalStorage: () => dispatch(productControllerActions.retrieveFavoritesFromLocalStorage()),
+    addProductToFavorites: productId => dispatch(productControllerActions.addProductToFavorites(productId)),
+    removeProductFromFavorites: productId => dispatch(productControllerActions.removeProductFromFavorites(productId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductController);

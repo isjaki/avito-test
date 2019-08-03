@@ -44,7 +44,7 @@ export const addProductToFavorites = productId => (dispatch) => {
 export const removeProductFromFavorites = productId => (dispatch) => {
     const favoriteProductIds = JSON.parse(localStorage.getItem('favoriteProductIds'));
     delete favoriteProductIds[productId];
-    localStorage.setItem('favorites', JSON.stringify(favoriteProductIds));
+    localStorage.setItem('favoriteProductIds', JSON.stringify(favoriteProductIds));
 
     dispatch(setFavoritesToState(favoriteProductIds));
 };

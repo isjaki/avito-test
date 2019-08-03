@@ -5,7 +5,13 @@ import RatingWidget from '../UI/RatingWidget/RatingWidget';
 import Button from '../UI/Button/Button';
 import styles from './Product.css';
 
-const Product = ({ title, price, pictures }) => (
+const Product = ({
+    title,
+    price,
+    pictures,
+    isProductFavorite,
+    onAddToFavoritesButtonClick,
+}) => (
     <div className={styles.product}>
         <div className={styles.imageContainer}>
             <img
@@ -21,7 +27,11 @@ const Product = ({ title, price, pictures }) => (
                 Вольво-центр Юг <RatingWidget rating={4.5} />
             </p>
         </div>
-        <Button buttonType="addToFavorites" />
+        <Button
+            buttonType="addToFavorites"
+            isActive={isProductFavorite}
+            onClick={onAddToFavoritesButtonClick}
+        />
     </div>
 );
 
@@ -29,6 +39,8 @@ Product.propTypes = {
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     pictures: PropTypes.arrayOf(PropTypes.string).isRequired,
+    isProductFavorite: PropTypes.bool.isRequired,
+    onAddToFavoritesButtonClick: PropTypes.func.isRequired,
 };
 
 export default Product;
