@@ -8,25 +8,48 @@ import ProductList from '../../components/ProductList/ProductList';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
 class ProductController extends Component {
+    constructor(props) {
+        super(props);
+        this.applyFiltersToProducts = this.applyFiltersToProducts.bind(this);
+    }
+
     componentDidMount() {
         const { fetchProducts, retrieveFavoritesFromLocalStorage } = this.props;
         fetchProducts();
         retrieveFavoritesFromLocalStorage();
     }
 
-    // applyFilters() {
-    //     const { category, price, isFavoritesOnly, products } = this.props;
+    applyFiltersToProducts(products) {
+        const { category, price, isFavoritesOnly, favoriteProductIds } = this.props;
 
-    //     return products.filter(product => {
+        return products.filter((product) => {
+            let isVisible = true;
 
-    //     })
-    // }
+            if (category !== 'all') {
+                isVisible = product.category === category;
+            }
+
+            isVisible = product.price >= price.from
+                && product.price <= price.to
+                && isVisible;
+
+            if (isFavoritesOnly === true) {
+                isVisible = (favoriteProductIds[product.id] === true) && isVisible;
+            }
+
+            return isVisible;
+        });
+    }
 
     render() {
         const { products, loading } = this.props;
 
+        const filteredProducts = this.applyFiltersToProducts(products);
+
+        console.log('filteredProducts', filteredProducts);
+
         return (
-            loading ? <Spinner /> : <ProductList products={products} />
+            loading ? <Spinner /> : <ProductList products={filteredProducts} />
         );
     }
 }
@@ -37,16 +60,18 @@ ProductController.propTypes = {
     loading: PropTypes.bool.isRequired,
     category: PropTypes.string.isRequired,
     price: PropTypes.shape({
-        priceFrom: PropTypes.number,
-        priceTo: PropTypes.number,
+        from: PropTypes.number,
+        to: PropTypes.number,
     }).isRequired,
     isFavoritesOnly: PropTypes.bool.isRequired,
     retrieveFavoritesFromLocalStorage: PropTypes.func.isRequired,
+    favoriteProductIds: PropTypes.objectOf(PropTypes.bool).isRequired,
 };
 
 const mapStateToProps = state => ({
     products: state.productController.products,
     loading: state.productController.loading,
+    favoriteProductIds: state.productController.favoriteProductIds,
     category: state.filters.category,
     price: state.filters.price,
     isFavoritesOnly: state.filters.isFavoritesOnly,
