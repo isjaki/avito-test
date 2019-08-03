@@ -1,21 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import RatingWidget from '../UI/RatingWidget/RatingWidget';
 import Button from '../UI/Button/Button';
 import styles from './Advert.css';
 
-const Advert = () => (
+const Advert = ({ title, price, pictures }) => (
     <div className={styles.advert}>
         <div className={styles.imageContainer}>
             <img
-                alt="car"
-                src="https://loremflickr.com/cache/resized/65535_46914519835_6232ba85d8_z_400_400_nofilter.jpg"
+                alt="product"
+                src={pictures[0]}
             />
-            <div className={styles.additionalPhotos}><span>+3</span></div>
+            <div className={styles.additionalPhotos}><span>+{pictures.length - 1}</span></div>
         </div>
         <div className={styles.mainInfo}>
-            <h2 className={styles.title}>апартаменты 3 комнаты, 70 кв.м.</h2>
-            <p className={styles.price}>{`${983823}`} &#8381;</p>
+            <h2 className={styles.title}>{title}</h2>
+            <p className={styles.price}>{price} &#8381;</p>
             <p className={styles.sellerInfo}>
                 Вольво-центр Юг <RatingWidget rating={4.5} />
             </p>
@@ -23,5 +24,11 @@ const Advert = () => (
         <Button buttonType="addToFavorites" />
     </div>
 );
+
+Advert.propTypes = {
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    pictures: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default Advert;
