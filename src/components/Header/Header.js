@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import FiltersWidget from '../FiltersWidget/FiltersWidget';
-import Selector from '../UI/Selector/Selector';
+import Sorting from '../../containers/Sorting/Sorting';
 import SideDrawer from '../SideDrawer/SideDrawer';
 import HamburgerButton from '../UI/Button/HamburgerButton/HamburgerButton';
 import styles from './Header.css';
@@ -37,13 +37,7 @@ class Header extends Component {
                     isOpened={isSideDrawerOpened}
                     onClick={this.toggleSideDrawerVisibility}
                 />
-                <Selector
-                    value="laptops"
-                    options={[
-                        { value: 'byPopularity', displayValue: 'По популярности' },
-                        { value: 'byPrice', displayValue: 'По возрастанию цены' },
-                    ]}
-                />
+                <Sorting />
             </header>
         );
     }

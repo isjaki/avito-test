@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 
 import productController from './store/reducers/productController';
 import filters from './store/reducers/filters';
+import sorting from './store/reducers/sorting';
 
 import App from './App';
 import './index.css';
@@ -13,6 +14,7 @@ import './index.css';
 const rootReducer = combineReducers({
     productController,
     filters,
+    sorting,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
