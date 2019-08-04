@@ -11,6 +11,7 @@ class ProductController extends Component {
     constructor(props) {
         super(props);
         this.applyFiltersToProducts = this.applyFiltersToProducts.bind(this);
+        this.sortProducts = this.sortProducts.bind(this);
     }
 
     componentDidMount() {
@@ -41,6 +42,25 @@ class ProductController extends Component {
         });
     }
 
+    sortProducts(products) {
+        const { sortingOption, sellers } = this.props;
+
+        switch (sortingOption) {
+            case 'byPopularity':
+                products.sort(
+                    (a, b) => sellers[b.relationships.seller].rating - sellers[a.relationships.seller].rating,
+                );
+                break;
+            case 'byPrice':
+                products.sort((a, b) => a.price - b.price);
+                break;
+            default:
+                return products;
+        }
+
+        return products;
+    }
+
     render() {
         const {
             products,
@@ -53,7 +73,7 @@ class ProductController extends Component {
 
         const filteredProducts = this.applyFiltersToProducts(products);
 
-        console.log('filteredProducts', filteredProducts);
+        this.sortProducts(filteredProducts);
 
         return loading ? <Spinner />
             : (
@@ -83,6 +103,7 @@ ProductController.propTypes = {
     }).isRequired,
     isFavoritesOnly: PropTypes.bool.isRequired,
     favoriteProductIds: PropTypes.objectOf(PropTypes.bool).isRequired,
+    sortingOption: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -93,6 +114,7 @@ const mapStateToProps = state => ({
     category: state.filters.category,
     price: state.filters.price,
     isFavoritesOnly: state.filters.isFavoritesOnly,
+    sortingOption: state.sorting.sortingOption,
 });
 
 const mapDispatchToProps = dispatch => ({

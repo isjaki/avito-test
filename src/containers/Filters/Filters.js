@@ -34,7 +34,7 @@ const Filters = ({
             />
         </FormElementContainer>
         <FormElementContainer label="По цене:">
-            <PriceFilter onPriceChange={debounce(updatePriceFilter, 800)} />
+            <PriceFilter onPriceChange={debounce(updatePriceFilter, 700)} />
         </FormElementContainer>
         <FormElementContainer>
             <Button
