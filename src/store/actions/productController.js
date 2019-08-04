@@ -1,7 +1,14 @@
+import { normalize, schema } from 'normalizr';
+
 import * as actionTypes from '../actionTypes';
 
-export const fetchProductsStart = () => ({
-    type: actionTypes.FETCH_PRODUCTS_START,
+export const fetchProductInfoStart = () => ({
+    type: actionTypes.FETCH_PRODUCT_INFO_START,
+});
+
+export const fetchProductInfoFail = error => ({
+    type: actionTypes.FETCH_PRODUCT_INFO_FAIL,
+    error,
 });
 
 export const fetchProductsSuccess = products => ({
@@ -9,22 +16,33 @@ export const fetchProductsSuccess = products => ({
     products,
 });
 
-export const fetchProductsFail = error => ({
-    type: actionTypes.FETCH_PRODUCTS_FAIL,
-    error,
+export const fetchSellersSuccess = sellers => ({
+    type: actionTypes.FETCH_SELLERS_SUCCESS,
+    sellers,
 });
 
-export const fetchProducts = () => (dispatch) => {
-    dispatch(fetchProductsStart());
-    fetch('http://avito.dump.academy/products')
+export const fetchProductInfo = () => dispatch => {
+    dispatch(fetchProductInfoStart());
+    fetch('http://avito.dump.academy/sellers')
         .then(res => res.json())
-        .then((res) => {
-            console.log(res);
+        .then(res => {
+            const sellerSchema = new schema.Entity('sellers', {}, {
+                processStrategy: value => ({
+                    name: value.name,
+                    rating: value.rating,
+                }),
+            });
+            const sellerListSchema = new schema.Array(sellerSchema);
+            const normalizedSellersData = normalize(res.data, sellerListSchema);
+            dispatch(fetchSellersSuccess(normalizedSellersData.entities.sellers));
+        })
+        .then(() => fetch('http://avito.dump.academy/products'))
+        .then(res => res.json())
+        .then(res => {
             dispatch(fetchProductsSuccess(res.data));
         })
-        .catch((error) => {
-            console.log(error);
-            dispatch(fetchProductsFail(error));
+        .catch(error => {
+            dispatch(fetchProductInfoFail(error));
         });
 };
 
@@ -33,7 +51,7 @@ export const setFavoritesToState = favoriteProductIds => ({
     favoriteProductIds,
 });
 
-export const addProductToFavorites = productId => (dispatch) => {
+export const addProductToFavorites = productId => dispatch => {
     const favoriteProductIds = JSON.parse(localStorage.getItem('favoriteProductIds'));
     favoriteProductIds[productId] = true;
     localStorage.setItem('favoriteProductIds', JSON.stringify(favoriteProductIds));
@@ -41,7 +59,7 @@ export const addProductToFavorites = productId => (dispatch) => {
     dispatch(setFavoritesToState(favoriteProductIds));
 };
 
-export const removeProductFromFavorites = productId => (dispatch) => {
+export const removeProductFromFavorites = productId => dispatch => {
     const favoriteProductIds = JSON.parse(localStorage.getItem('favoriteProductIds'));
     delete favoriteProductIds[productId];
     localStorage.setItem('favoriteProductIds', JSON.stringify(favoriteProductIds));
@@ -49,7 +67,7 @@ export const removeProductFromFavorites = productId => (dispatch) => {
     dispatch(setFavoritesToState(favoriteProductIds));
 };
 
-export const retrieveFavoritesFromLocalStorage = () => (dispatch) => {
+export const retrieveFavoritesFromLocalStorage = () => dispatch => {
     let favoriteProductIds = localStorage.getItem('favoriteProductIds');
     if (favoriteProductIds === null) {
         localStorage.setItem('favoriteProductIds', '{}');

@@ -14,15 +14,15 @@ class ProductController extends Component {
     }
 
     componentDidMount() {
-        const { fetchProducts, retrieveFavoritesFromLocalStorage } = this.props;
-        fetchProducts();
+        const { fetchProductInfo, retrieveFavoritesFromLocalStorage } = this.props;
+        fetchProductInfo();
         retrieveFavoritesFromLocalStorage();
     }
 
     applyFiltersToProducts(products) {
         const { category, price, isFavoritesOnly, favoriteProductIds } = this.props;
 
-        return products.filter((product) => {
+        return products.filter(product => {
             let isVisible = true;
 
             if (category !== 'all') {
@@ -44,10 +44,11 @@ class ProductController extends Component {
     render() {
         const {
             products,
+            sellers,
             loading,
+            favoriteProductIds,
             addProductToFavorites,
             removeProductFromFavorites,
-            favoriteProductIds,
         } = this.props;
 
         const filteredProducts = this.applyFiltersToProducts(products);
@@ -58,6 +59,7 @@ class ProductController extends Component {
             : (
                 <ProductList
                     products={filteredProducts}
+                    sellers={sellers}
                     addProductToFavorites={addProductToFavorites}
                     removeProductFromFavorites={removeProductFromFavorites}
                     favoriteProductIds={favoriteProductIds}
@@ -67,8 +69,12 @@ class ProductController extends Component {
 }
 
 ProductController.propTypes = {
-    fetchProducts: PropTypes.func.isRequired,
+    fetchProductInfo: PropTypes.func.isRequired,
+    retrieveFavoritesFromLocalStorage: PropTypes.func.isRequired,
+    addProductToFavorites: PropTypes.func.isRequired,
+    removeProductFromFavorites: PropTypes.func.isRequired,
     products: PropTypes.arrayOf(PropTypes.object).isRequired,
+    sellers: PropTypes.objectOf(PropTypes.object).isRequired,
     loading: PropTypes.bool.isRequired,
     category: PropTypes.string.isRequired,
     price: PropTypes.shape({
@@ -76,14 +82,12 @@ ProductController.propTypes = {
         to: PropTypes.number,
     }).isRequired,
     isFavoritesOnly: PropTypes.bool.isRequired,
-    retrieveFavoritesFromLocalStorage: PropTypes.func.isRequired,
     favoriteProductIds: PropTypes.objectOf(PropTypes.bool).isRequired,
-    addProductToFavorites: PropTypes.func.isRequired,
-    removeProductFromFavorites: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
     products: state.productController.products,
+    sellers: state.productController.sellers,
     loading: state.productController.loading,
     favoriteProductIds: state.productController.favoriteProductIds,
     category: state.filters.category,
@@ -92,7 +96,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchProducts: () => dispatch(productControllerActions.fetchProducts()),
+    fetchProductInfo: () => dispatch(productControllerActions.fetchProductInfo()),
     retrieveFavoritesFromLocalStorage: () => dispatch(productControllerActions.retrieveFavoritesFromLocalStorage()),
     addProductToFavorites: productId => dispatch(productControllerActions.addProductToFavorites(productId)),
     removeProductFromFavorites: productId => dispatch(productControllerActions.removeProductFromFavorites(productId)),

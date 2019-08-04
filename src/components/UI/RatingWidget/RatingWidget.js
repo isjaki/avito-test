@@ -14,7 +14,7 @@ const RatingWidget = ({ rating }) => {
 
     return (
         <span className={classes}>
-            <i className="fas fa-star" /> {rating}
+            <i className="fas fa-star" />&nbsp;{rating}
         </span>
     );
 };

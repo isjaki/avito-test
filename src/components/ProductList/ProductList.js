@@ -5,11 +5,12 @@ import Product from '../Product/Product';
 
 const ProductList = ({
     products,
+    sellers,
     addProductToFavorites,
     removeProductFromFavorites,
     favoriteProductIds,
 }) => (
-    products.map((product) => {
+    products.map(product => {
         const isProductFavorite = favoriteProductIds[product.id] === true;
         const onAddToFavoritesButtonClick = isProductFavorite
             ? removeProductFromFavorites
@@ -22,6 +23,7 @@ const ProductList = ({
                 price={product.price}
                 pictures={product.pictures}
                 isProductFavorite={isProductFavorite}
+                sellerInfo={sellers[product.relationships.seller]}
                 onAddToFavoritesButtonClick={() => onAddToFavoritesButtonClick(product.id)}
             />
         );
@@ -30,9 +32,10 @@ const ProductList = ({
 
 ProductList.propTypes = {
     products: PropTypes.arrayOf(PropTypes.object).isRequired,
+    sellers: PropTypes.objectOf(PropTypes.object).isRequired,
+    favoriteProductIds: PropTypes.objectOf(PropTypes.bool).isRequired,
     addProductToFavorites: PropTypes.func.isRequired,
     removeProductFromFavorites: PropTypes.func.isRequired,
-    favoriteProductIds: PropTypes.objectOf(PropTypes.bool).isRequired,
 };
 
 export default ProductList;

@@ -2,14 +2,21 @@ import * as actionTypes from '../actionTypes';
 
 const initialState = {
     products: [],
+    sellers: {},
     favoriteProductIds: {},
     loading: false,
     error: null,
 };
 
-const fetchProductsStart = state => ({
+const fetchProductInfoStart = state => ({
     ...state,
     loading: true,
+});
+
+const fetchProductInfoFail = (state, action) => ({
+    ...state,
+    loading: false,
+    error: action.error,
 });
 
 const fetchProductsSuccess = (state, action) => ({
@@ -18,10 +25,9 @@ const fetchProductsSuccess = (state, action) => ({
     products: action.products,
 });
 
-const fetchProductsFail = (state, action) => ({
+const fetchSellersSuccess = (state, action) => ({
     ...state,
-    loading: false,
-    error: action.error,
+    sellers: action.sellers,
 });
 
 const setFavoritesToState = (state, action) => ({
@@ -31,12 +37,14 @@ const setFavoritesToState = (state, action) => ({
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.FETCH_PRODUCTS_START:
-            return fetchProductsStart(state, action);
+        case actionTypes.FETCH_PRODUCT_INFO_START:
+            return fetchProductInfoStart(state, action);
+        case actionTypes.FETCH_PRODUCT_INFO_FAIL:
+            return fetchProductInfoFail(state, action);
         case actionTypes.FETCH_PRODUCTS_SUCCESS:
             return fetchProductsSuccess(state, action);
-        case actionTypes.FETCH_PRODUCTS_FAIL:
-            return fetchProductsFail(state, action);
+        case actionTypes.FETCH_SELLERS_SUCCESS:
+            return fetchSellersSuccess(state, action);
         case actionTypes.SET_FAVORITES_TO_STATE:
             return setFavoritesToState(state, action);
         default:
