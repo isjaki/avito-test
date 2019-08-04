@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import * as productControllerActions from '../../store/actions/productController';
 
+import ErrorMessage from '../../components/UI/ErrorMessage/ErrorMessage';
 import ProductList from '../../components/ProductList/ProductList';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
@@ -66,10 +67,13 @@ class ProductController extends Component {
             products,
             sellers,
             loading,
+            error,
             favoriteProductIds,
             addProductToFavorites,
             removeProductFromFavorites,
         } = this.props;
+
+        if (error) return <ErrorMessage />;
 
         const filteredProducts = this.applyFiltersToProducts(products);
 
@@ -96,6 +100,7 @@ ProductController.propTypes = {
     products: PropTypes.arrayOf(PropTypes.object).isRequired,
     sellers: PropTypes.objectOf(PropTypes.object).isRequired,
     loading: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired,
     category: PropTypes.string.isRequired,
     price: PropTypes.shape({
         from: PropTypes.number,
@@ -110,6 +115,7 @@ const mapStateToProps = state => ({
     products: state.productController.products,
     sellers: state.productController.sellers,
     loading: state.productController.loading,
+    error: state.productController.error,
     favoriteProductIds: state.productController.favoriteProductIds,
     category: state.filters.category,
     price: state.filters.price,

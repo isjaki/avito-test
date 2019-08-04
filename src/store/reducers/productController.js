@@ -5,18 +5,19 @@ const initialState = {
     sellers: {},
     favoriteProductIds: {},
     loading: false,
-    error: null,
+    error: false,
 };
 
 const fetchProductInfoStart = state => ({
     ...state,
     loading: true,
+    error: false,
 });
 
-const fetchProductInfoFail = (state, action) => ({
+const fetchProductInfoFail = state => ({
     ...state,
     loading: false,
-    error: action.error,
+    error: true,
 });
 
 const fetchProductsSuccess = (state, action) => ({

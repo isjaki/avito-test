@@ -6,9 +6,8 @@ export const fetchProductInfoStart = () => ({
     type: actionTypes.FETCH_PRODUCT_INFO_START,
 });
 
-export const fetchProductInfoFail = error => ({
+export const fetchProductInfoFail = () => ({
     type: actionTypes.FETCH_PRODUCT_INFO_FAIL,
-    error,
 });
 
 export const fetchProductsSuccess = products => ({
@@ -46,8 +45,8 @@ export const fetchProductInfo = () => dispatch => {
         .then(res => {
             dispatch(fetchProductsSuccess(res.data));
         })
-        .catch(error => {
-            dispatch(fetchProductInfoFail(error));
+        .catch(() => {
+            dispatch(fetchProductInfoFail());
         });
 };
 
