@@ -4,7 +4,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import productController from './store/reducers/productController';
+import products from './store/reducers/products';
 import filters from './store/reducers/filters';
 import sorting from './store/reducers/sorting';
 
@@ -12,7 +12,7 @@ import App from './App';
 import './index.css';
 
 const rootReducer = combineReducers({
-    productController,
+    products,
     filters,
     sorting,
 });

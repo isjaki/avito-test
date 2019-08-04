@@ -1,4 +1,4 @@
-.productContainer {
+.productWrapper {
     width: 100%;
     min-height: 100vh;
     padding: 10px;
@@ -12,13 +12,13 @@
 }
 
 @media screen and (min-width: 960px) {
-    .productContainer {
+    .productWrapper {
         width: 75%;
     }
 }
 
 @media screen and (min-width: 1600px) {
-    .productContainer {
+    .productWrapper {
         width: calc(100% - 400px);
     }
 }
