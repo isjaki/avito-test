@@ -20,7 +20,7 @@ const Product = ({
         <div className={styles.mainInfo}>
             <h2 className={styles.title}>{title}</h2>
             <ProductPrice price={price} />
-            {sellerInfo && <ProductSellerInfo name={sellerInfo.name} rating={sellerInfo.rating} />}
+            <ProductSellerInfo name={sellerInfo.name} rating={sellerInfo.rating} />
         </div>
         <Button
             buttonType="addToFavorites"

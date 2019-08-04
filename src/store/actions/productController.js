@@ -22,8 +22,10 @@ export const fetchSellersSuccess = sellers => ({
 });
 
 export const fetchProductInfo = () => dispatch => {
+    const proxyURL = 'https://cors-anywhere.herokuapp.com/';
     dispatch(fetchProductInfoStart());
-    fetch('http://avito.dump.academy/sellers')
+
+    fetch(`${proxyURL}http://avito.dump.academy/sellers`)
         .then(res => res.json())
         .then(res => {
             const sellerSchema = new schema.Entity('sellers', {}, {
@@ -36,7 +38,7 @@ export const fetchProductInfo = () => dispatch => {
             const normalizedSellersData = normalize(res.data, sellerListSchema);
             dispatch(fetchSellersSuccess(normalizedSellersData.entities.sellers));
         })
-        .then(() => fetch('http://avito.dump.academy/products'))
+        .then(() => fetch(`${proxyURL}http://avito.dump.academy/products`))
         .then(res => res.json())
         .then(res => {
             dispatch(fetchProductsSuccess(res.data));
