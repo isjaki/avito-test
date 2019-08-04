@@ -1,5 +1,6 @@
 .ratingWidget {
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .high > i {
