@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import styles from './Button.css';
 
 const Button = ({
-    children, buttonType, isActive, onClick,
+    children, buttonType, isActive, onClick, tooltip,
 }) => {
     const classes = classNames({
         [styles.button]: true,
@@ -31,6 +31,7 @@ const Button = ({
             type="button"
             className={classes}
             onClick={onClick}
+            title={tooltip}
         >
             {buttonContent}
         </button>
@@ -45,11 +46,13 @@ Button.propTypes = {
     buttonType: PropTypes.string.isRequired,
     isActive: PropTypes.bool,
     onClick: PropTypes.func.isRequired,
+    tooltip: PropTypes.string,
 };
 
 Button.defaultProps = {
     isActive: false,
     children: '',
+    tooltip: null,
 };
 
 export default Button;

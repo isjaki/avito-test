@@ -6,9 +6,8 @@ export const fetchProductInfoStart = () => ({
     type: actionTypes.FETCH_PRODUCT_INFO_START,
 });
 
-export const fetchProductInfoFail = error => ({
+export const fetchProductInfoFail = () => ({
     type: actionTypes.FETCH_PRODUCT_INFO_FAIL,
-    error,
 });
 
 export const fetchProductsSuccess = products => ({
@@ -22,6 +21,8 @@ export const fetchSellersSuccess = sellers => ({
 });
 
 export const fetchProductInfo = () => dispatch => {
+    // добавил прокси url к эндпоинтам, поскольку время от времени браузер ругается и блокирует запрос
+    // из за политики CORS, особенно после очистки кэша и перезагрузки
     const proxyURL = 'https://cors-anywhere.herokuapp.com/';
     dispatch(fetchProductInfoStart());
 
@@ -36,6 +37,7 @@ export const fetchProductInfo = () => dispatch => {
             });
             const sellerListSchema = new schema.Array(sellerSchema);
             const normalizedSellersData = normalize(res.data, sellerListSchema);
+
             dispatch(fetchSellersSuccess(normalizedSellersData.entities.sellers));
         })
         .then(() => fetch(`${proxyURL}http://avito.dump.academy/products`))
@@ -43,8 +45,8 @@ export const fetchProductInfo = () => dispatch => {
         .then(res => {
             dispatch(fetchProductsSuccess(res.data));
         })
-        .catch(error => {
-            dispatch(fetchProductInfoFail(error));
+        .catch(() => {
+            dispatch(fetchProductInfoFail());
         });
 };
 

@@ -1,4 +1,4 @@
-.productContainer {
+.productWrapper {
     width: 100%;
     min-height: 100vh;
     padding: 10px;
@@ -7,17 +7,18 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
 @media screen and (min-width: 960px) {
-    .productContainer {
+    .productWrapper {
         width: 75%;
     }
 }
 
 @media screen and (min-width: 1600px) {
-    .productContainer {
+    .productWrapper {
         width: calc(100% - 400px);
     }
 }

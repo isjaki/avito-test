@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import * as productControllerActions from '../../store/actions/productController';
+import * as productActions from '../../store/actions/products';
 
+import ErrorMessage from '../../components/UI/ErrorMessage/ErrorMessage';
 import ProductList from '../../components/ProductList/ProductList';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-class ProductController extends Component {
+class Products extends Component {
     constructor(props) {
         super(props);
         this.applyFiltersToProducts = this.applyFiltersToProducts.bind(this);
@@ -66,10 +67,13 @@ class ProductController extends Component {
             products,
             sellers,
             loading,
+            error,
             favoriteProductIds,
             addProductToFavorites,
             removeProductFromFavorites,
         } = this.props;
+
+        if (error) return <ErrorMessage />;
 
         const filteredProducts = this.applyFiltersToProducts(products);
 
@@ -88,7 +92,7 @@ class ProductController extends Component {
     }
 }
 
-ProductController.propTypes = {
+Products.propTypes = {
     fetchProductInfo: PropTypes.func.isRequired,
     retrieveFavoritesFromLocalStorage: PropTypes.func.isRequired,
     addProductToFavorites: PropTypes.func.isRequired,
@@ -96,6 +100,7 @@ ProductController.propTypes = {
     products: PropTypes.arrayOf(PropTypes.object).isRequired,
     sellers: PropTypes.objectOf(PropTypes.object).isRequired,
     loading: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired,
     category: PropTypes.string.isRequired,
     price: PropTypes.shape({
         from: PropTypes.number,
@@ -107,10 +112,11 @@ ProductController.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    products: state.productController.products,
-    sellers: state.productController.sellers,
-    loading: state.productController.loading,
-    favoriteProductIds: state.productController.favoriteProductIds,
+    products: state.products.products,
+    sellers: state.products.sellers,
+    loading: state.products.loading,
+    error: state.products.error,
+    favoriteProductIds: state.products.favoriteProductIds,
     category: state.filters.category,
     price: state.filters.price,
     isFavoritesOnly: state.filters.isFavoritesOnly,
@@ -118,10 +124,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchProductInfo: () => dispatch(productControllerActions.fetchProductInfo()),
-    retrieveFavoritesFromLocalStorage: () => dispatch(productControllerActions.retrieveFavoritesFromLocalStorage()),
-    addProductToFavorites: productId => dispatch(productControllerActions.addProductToFavorites(productId)),
-    removeProductFromFavorites: productId => dispatch(productControllerActions.removeProductFromFavorites(productId)),
+    fetchProductInfo: () => dispatch(productActions.fetchProductInfo()),
+    retrieveFavoritesFromLocalStorage: () => dispatch(productActions.retrieveFavoritesFromLocalStorage()),
+    addProductToFavorites: productId => dispatch(productActions.addProductToFavorites(productId)),
+    removeProductFromFavorites: productId => dispatch(productActions.removeProductFromFavorites(productId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductController);
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

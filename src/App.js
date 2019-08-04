@@ -2,13 +2,13 @@ import React, { Fragment } from 'react';
 
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
-import ProductContainer from './components/ProductContainer/ProductContainer';
+import ProductWrapper from './components/ProductWrapper/ProductWrapper';
 import FiltersWidget from './components/FiltersWidget/FiltersWidget';
 
 const App = () => (
     <Fragment>
         <Header />
-        <ProductContainer />
+        <ProductWrapper />
         <Sidebar>
             <FiltersWidget />
         </Sidebar>

@@ -25,6 +25,7 @@ const Product = ({
         <Button
             buttonType="addToFavorites"
             isActive={isProductFavorite}
+            tooltip="добавить в избранное"
             onClick={onAddToFavoritesButtonClick}
         />
     </div>
