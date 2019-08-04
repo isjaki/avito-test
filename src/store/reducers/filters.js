@@ -9,12 +9,12 @@ const initialState = {
     isFavoritesOnly: false,
 };
 
-const setCategoryFilter = (state, action) => ({
+const updateCategoryFilter = (state, action) => ({
     ...state,
     category: action.categoryType,
 });
 
-const setPriceFilter = (state, action) => ({
+const updatePriceFilter = (state, action) => ({
     ...state,
     price: {
         ...state.price,
@@ -23,19 +23,19 @@ const setPriceFilter = (state, action) => ({
     },
 });
 
-const setFavoritesOnlyFilter = state => ({
+const updateFavoritesOnlyFilter = state => ({
     ...state,
     isFavoritesOnly: !state.isFavoritesOnly,
 });
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.SET_CATEGORY_FILTER:
-            return setCategoryFilter(state, action);
-        case actionTypes.SET_PRICE_FILTER:
-            return setPriceFilter(state, action);
-        case actionTypes.SET_FAVORITES_ONLY_FILTER:
-            return setFavoritesOnlyFilter(state, action);
+        case actionTypes.UPDATE_CATEGORY_FILTER:
+            return updateCategoryFilter(state, action);
+        case actionTypes.UPDATE_PRICE_FILTER:
+            return updatePriceFilter(state, action);
+        case actionTypes.UPDATE_FAVORITES_ONLY_FILTER:
+            return updateFavoritesOnlyFilter(state, action);
         default:
             return state;
     }

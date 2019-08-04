@@ -1,16 +1,16 @@
 import * as actionTypes from '../actionTypes';
 
-export const setCategoryFilter = categoryType => ({
-    type: actionTypes.SET_CATEGORY_FILTER,
+export const updateCategoryFilter = categoryType => ({
+    type: actionTypes.UPDATE_CATEGORY_FILTER,
     categoryType,
 });
 
-export const setPriceFilter = (priceFrom, priceTo) => ({
-    type: actionTypes.SET_PRICE_FILTER,
+export const updatePriceFilter = (priceFrom, priceTo) => ({
+    type: actionTypes.UPDATE_PRICE_FILTER,
     priceFrom,
     priceTo,
 });
 
-export const setFavoritesOnlyFilter = () => ({
-    type: actionTypes.SET_FAVORITES_ONLY_FILTER,
+export const updateFavoritesOnlyFilter = () => ({
+    type: actionTypes.UPDATE_FAVORITES_ONLY_FILTER,
 });

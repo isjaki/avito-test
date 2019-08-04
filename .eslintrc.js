@@ -34,6 +34,7 @@ module.exports = {
     "jsx-a11y/click-events-have-key-events": "off",
     "object-curly-newline": ["error", { 
       "ImportDeclaration": { "multiline": true, "minProperties": 6 }  
-    }]
+    }],
+    "arrow-parens": ["error", "as-needed"],
   },
 };

@@ -1,0 +1,22 @@
+.productSellerInfo {
+    margin: 0 0 5px;
+    font-size: 0.7rem;
+}
+
+@media screen and (min-width: 400px) {
+    .productSellerInfo {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .productSellerInfo {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .productSellerInfo {
+        font-size: 1.1rem;
+    }
+}
